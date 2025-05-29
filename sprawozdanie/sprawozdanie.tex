@@ -1,0 +1,281 @@
+\documentclass[polish]{article}
+
+
+
+\usepackage{polski}
+\usepackage[T1]{fontenc}
+\usepackage{tgpagella}
+\usepackage{colortbl}
+\usepackage[table]{xcolor}
+% \usepackage[a4paper, total={7in, 10in}]{geometry}
+\usepackage[a4paper, left=0.75in, right=0.75in, top=0.75in, bottom=0.75in]{geometry}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage{graphicx}
+\usepackage[autostyle]{csquotes}
+\DeclareQuoteAlias{dutch}{polish}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{babel}
+\usepackage{soul}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{xcolor}
+\usepackage{lipsum}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[normalem]{ulem}
+
+\hypersetup{
+    colorlinks=true,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=black
+}
+
+\setlength\parindent{24pt}
+
+
+\titlelabel{\thetitle.\quad}
+
+
+\lstset
+{
+    %basicstyle=\footnotesize,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize\small,% basic font setting
+    %basicstyle=\sffamily,
+    numbers=left,
+    stepnumber=0,
+    showstringspaces=false,
+    tabsize=1,
+    breaklines=true,
+    breakatwhitespace=false,
+}
+
+\lstnewenvironment{CPP}
+  {\lstset{
+    language=C++,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize\small,% basic font setting
+    commentstyle=\color{green!60!black},
+    keywordstyle=\color{magenta},
+    stringstyle=\color{blue!50!red},
+    numberstyle=\footnotesize\color{gray},
+    numbersep=10pt,
+    %stepnumber=2,
+    frame=L,
+    %framerule=1pt,
+    %rulecolor=\color{red},
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    numbers=none,
+    showstringspaces=false,
+    tabsize=1,
+    breakatwhitespace=false,
+    inputpath=code}}
+  {}
+
+  \lstnewenvironment{C}
+  {\lstset{
+    language=C,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize\small,% basic font setting
+    commentstyle=\color{green!60!black},
+    keywordstyle=\color{magenta},
+    stringstyle=\color{blue!50!red},
+    numberstyle=\footnotesize\color{gray},
+    numbersep=10pt,
+    %stepnumber=2,
+    frame=L,
+    %framerule=1pt,
+    %rulecolor=\color{red},
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    numbers=none,
+    showstringspaces=false,
+    tabsize=1,
+    breakatwhitespace=false,
+    inputpath=code}}
+  {}
+
+  \lstnewenvironment{Python}
+  {\lstset{
+    language=Python,
+    backgroundcolor=\color{black!5}, % set backgroundcolor
+    basicstyle=\footnotesize\small,% basic font setting
+    commentstyle=\color{green!60!black},
+    keywordstyle=\color{magenta},
+    stringstyle=\color{blue!50!red},
+    numberstyle=\footnotesize\color{gray},
+    numbersep=10pt,
+    %stepnumber=2,
+    frame=L,
+    %framerule=1pt,
+    %rulecolor=\color{red},
+    breaklines=true,
+    postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space},
+    numbers=none,
+    showstringspaces=false,
+    tabsize=1,
+    breakatwhitespace=false,
+    inputpath=code}}
+  {}
+
+
+\newenvironment{cverbatim}
+ {\SaveVerbatim{cverb}}
+ {\endSaveVerbatim
+  \flushleft\fboxrule=0pt\fboxsep=.5em
+  \colorbox{cverbbg}{\BUseVerbatim{cverb}}%
+  \endflushleft
+}
+
+\newenvironment{lcverbatim}
+ {\SaveVerbatim{cverb}}
+ {\endSaveVerbatim
+  \flushleft\fboxrule=0pt\fboxsep=.5em
+  \colorbox{cverbbg}{%
+    \makebox[\dimexpr\linewidth-2\fboxsep][l]{\BUseVerbatim{cverb}}%
+  }
+  \endflushleft
+}
+
+\newcommand{\ctexttt}[1]{\colorbox{cverbbg}{\texttt{#1}}}
+% \newverbcommand{\cverb}
+%   {\setbox\verbbox\hbox\bgroup}
+%   {\egroup\colorbox{cverbbg}{\box\verbbox}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% WEII STOPKA
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \pagestyle{fancy}
+% % \fancyhf{}
+
+% % Upper header line configuration
+% \renewcommand{\headrulewidth}{0pt}
+% \chead{}
+% \lhead{}
+% \rhead{}
+
+
+% % Header configuration
+% \fancyfoot[C]{%
+%     \begin{minipage}{\textwidth}
+%         \centering
+%         \begin{minipage}{0.1\textwidth}
+%             \includegraphics[width=\textwidth]{img/zsz_logo.png}
+%         \end{minipage}%
+%         \hspace{0.02\textwidth}%
+%         \begin{minipage}{0.85\textwidth}
+%             \raggedright
+%             \textcolor[rgb]{0.5,0.5,0.5}{
+%                 \textbf{ZAKŁAD SYSTEMÓW ZŁOŻONYCH}\\
+%                 Wydział Elektrotechniki i Informatyki\\
+%                 ul. Wincentego Pola 2, 35-959 Rzeszów, tel. 17 865 1340\\
+%                 \texttt{zsz.prz.edu.pl}
+%             }
+%         \end{minipage}
+%     \end{minipage}
+% }
+
+
+
+
+\begin{document}
+
+    \LARGE\begin{titlepage}
+
+        \begin{center}
+
+        \includegraphics*{img/wmifs_pl.png}
+
+
+
+        \vspace{3cm}
+
+        \textbf{Statystyczna Analiza Danych}
+
+        \vspace{1cm}
+            Analiza samobójstw *NAZWA DO ZMIANY* % TODO
+
+        \vspace{5cm}
+
+        \raggedleft\vfil
+        Jakub Piasek\\
+        169828 \\
+        Inżynieria i Analiza Danych II rok, gr. lab. nr 1\\
+        30.05.2025
+
+
+        \end{center}
+
+    \end{titlepage}
+
+    \normalsize
+
+    \tableofcontents
+
+    \newpage
+
+    \section{Wstęp do projektu}
+
+    \subsection{Opis użytych danych}
+
+    Dane wykorzystane w analizie pochodzą ze zbioru \textbf{„Suicide Rates Overview 1985 to 2016”}, dostępnego na platformie \textbf{\href{https://www.kaggle.com/datasets/russellyates88/suicide-rates-overview-1985-to-2016}{\textcolor{blue}{\uline{Kaggle}}}}. Zbiór ten został opracowany na podstawie informacji z czterech źródeł międzynarodowych:
+
+    \begin{itemize}
+        \item \textbf{{\href{http://www.who.int/mental_health/suicide-prevention/en/}{\textcolor{blue}{\uline{World Health Organization (WHO)}}}}} – dane dotyczące samobójstw na całym świecie,
+        \item \textbf{{\href{http://databank.worldbank.org/data/source/world-development-indicators#}{\textcolor{blue}{\uline{World Bank}}}}} – wskaźniki gospodarcze, w tym PKB (GDP) per capita,
+        \item \textbf{{\href{http://hdr.undp.org/en/indicators/137506}{\textcolor{blue}{\uline{United Nations Development Program (UNDP)}}}}} – Wskaźnik Rozwoju Społecznego (HDI),
+        \item \textbf{\href{https://www.kaggle.com/szamil/suicide-in-the-twenty-first-century/notebook}{\textcolor{blue}{\uline{Szamil’s Kaggle dataset}}}} – zawierający podstawowe dane o samobójstwach według kraju, płci, grupy wiekowej i roku.
+    \end{itemize}
+
+    Dane obejmują okres od \textbf{1985 do 2016 roku} i zawierają informacje dla ponad \textbf{100 krajów}. Główne zmienne to m.in.:
+
+    \begin{itemize}
+        \item liczba samobójstw,
+        \item liczba ludności,
+        \item współczynnik samobójstw (na 100 tys. mieszkańców),
+        \item rok, kraj, płeć, grupa wiekowa,
+        \item PKB per capita (USD),
+        \item HDI.
+    \end{itemize}
+
+    Wskaźnik samobójstw w latach 1985–2016 porównywany jest ze statystykami społeczno-gospodarczymi, co pozwala analizować zależności pomiędzy rozwojem gospodarczym a częstością samobójstw w podziale na kraje i lata (Compares socio-economic info with suicide rates by year and country).
+
+    \subsection*{Uzasadnienie wyboru danych}
+
+    Zbiór danych został wybrany ze względu na:
+
+    \begin{itemize}
+        \item \textbf{dużą szczegółowość czasową i demograficzną}, co umożliwia analizę trendów samobójstw w różnych grupach społecznych;
+        \item \textbf{powiązanie danych zdrowotnych z wskaźnikami ekonomicznymi i rozwojowymi}, co pozwala badać korelacje między poziomem rozwoju kraju a częstością samobójstw;
+        \item \textbf{globalny zasięg} – dane obejmują kraje o różnym poziomie rozwoju, co umożliwia porównania międzynarodowe;
+        \item \textbf{wiarygodność źródeł} – dane pochodzą z renomowanych organizacji międzynarodowych (WHO, World Bank, UNDP).
+    \end{itemize}
+
+    Zbiór ten jest szczególnie przydatny w badaniach nad zdrowiem psychicznym, polityką społeczną i profilaktyką samobójstw, zarówno na poziomie globalnym, jak i krajowym.
+
+
+    \newpage
+
+    \section{Podstawowe parametry opisowe}
+
+    \newpage
+
+    \section{Wykresy}
+
+    \newpage
+
+    \section{Hipotezy}
+
+    \newpage
+
+    \section{Wnioski}
+
+\end{document}

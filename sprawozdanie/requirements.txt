@@ -1,0 +1,5 @@
+polski.sty
+tgpagella.sty
+soul.sty
+fancyhdr.sty
+lipsum.sty
