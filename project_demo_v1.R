@@ -93,6 +93,17 @@ stats <- data %>%
 # Wyświetlenie wyników statystycznych
 print(stats)
 
+stats_t <- stats %>%
+  pivot_longer(
+    cols = mean:skewness,
+    names_to = c("Parametr")
+  )
+
+colnames(stats_t) <- c("Parametr", "Wartość")
+
+round(stats_t, digits = 4)
+
+stats_t
 
 # Wykresy
 
@@ -224,11 +235,13 @@ mapplot
 dagostino_results <- data %>%
   group_by(sex) %>%
   summarise(
-    p_value = ad.test(value)$p.value,  # Anderson-Darling test (alternatywa do Shapiro)
+    p_value = ad.test(value)$p.value,
+    critical_region = p_value < 0.05,
     .groups = "drop"
   )
 
 print(dagostino_results)
+
 
 
 # 2. Hipoteza: Czy współczynnik samobójstw różni się istotnie między grupami wiekowymi "15-24 years" a "75+ years"?
@@ -246,7 +259,27 @@ print(dagostino_results)
 # Filtrujemy tylko dwie grupy wiekowe do porównania
 wilcox_age <- data %>%
   filter(age %in% c("15-24 years", "75+ years")) %>%
-  select(age, value) %>%
-  wilcox.test(value ~ age, data = .)
+  select(age, value)
 
-print(wilcox_age)
+wilcox_test_result <- wilcox.test(value ~ age, data = wilcox_age)
+
+print(wilcox_test_result)
+
+# Obszar krytyczny
+if (wilcox_test_result$p.value < 0.05) {
+  message("Wynik testu znajduje się w obszarze krytycznym – odrzucamy H0.")
+} else {
+  message("Wynik testu nie znajduje się w obszarze krytycznym – brak podstaw do odrzucenia H0.")
+}
+
+histogram_hipoteza2 <- ggplot(wilcox_age, aes(x = value, fill = age)) +
+  geom_histogram(position = "identity", alpha = 0.6, bins = 22) +
+  labs(
+    title = "Porównanie rozkładów współczynnika samobójstw",
+    x = "Suicides per 100k population",
+    y = "Liczba obserwacji",
+    fill = "Grupa wiekowa"
+  ) +
+  theme_minimal()
+
+histogram_hipoteza2
